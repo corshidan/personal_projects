@@ -1,13 +1,15 @@
-//Declare variables with user move and computer move
+//Declaring all the variables at the top for clarity
+
 const result = document.querySelector(".result");
+
 let gamesWon = 0;
 let gamesLost = 0;
 let gamesDrawn = 0;
-let isContinueGame = true;
 let playerMove = "";
 let compMove = 0;
 let gamesPlayed = 0;
 let userName = "";
+
 document.querySelector("#playerinput").addEventListener("change", (e) => {
   userName = e.target.value;
 });
@@ -24,6 +26,7 @@ document.querySelector("#playagain").addEventListener("click", (e) => {
   resetGame();
 });
 
+//assigning a random move for the computer
 function computerMove(randomNumber) {
   if (randomNumber === 1) {
     return "rock";
@@ -33,6 +36,7 @@ function computerMove(randomNumber) {
     return "scissors";
   }
 }
+// the logic of the game deciding the winner
 function getWinner(playerMove, comp) {
   if (playerMove === comp) {
     gamesDrawn++;
@@ -51,6 +55,7 @@ function getWinner(playerMove, comp) {
     return "You have lost!";
   }
 }
+//the game being played when a choice is made
 function buttonPressed(event) {
   compMove = computerMove(Math.floor(Math.random() * 3));
   playerMove = event.target.innerText.toLowerCase();
@@ -62,6 +67,7 @@ function buttonPressed(event) {
     - Games Lost: ${gamesLost}
     - Games Drawn: ${gamesDrawn}`;
 }
+// reseting the game and scores
 function resetGame() {
   gamesWon = 0;
   gamesLost = 0;
